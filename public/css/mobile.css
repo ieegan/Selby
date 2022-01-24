@@ -1,0 +1,53 @@
+.brand-slide-tiles .brand-slide-tile {
+  margin-right: 20px;
+  width: 88px;
+  height: 28px;
+}
+
+.brand-slide-tiles .brand-slide-tile span img {
+  max-width: 90px;
+  max-height: 28px;
+}
+
+.main-carousel {
+  height: 600px;
+}
+
+.productGallery {
+  height: 240px;
+  max-width: 100%;
+}
+
+.productGallery .flickity-viewport {
+  height: 240px;
+}
+
+.productThumbnail {
+  height: 60px;
+  max-width: 100%;
+}
+
+.productThumbnail .flickity-viewport {
+  height: 60px !important;
+}
+
+.productThumbnail .productThumbnailImage {
+  width: 60px;
+}
+
+.product-info {
+  margin-bottom: 1rem !important;
+}
+
+.product-info .level-right {
+  margin-top: 1rem;
+}
+
+.stock-updater .level-right {
+  flex-grow: 1;
+}
+
+.stock-updater .level-right .button {
+  width: 100%;
+}
+

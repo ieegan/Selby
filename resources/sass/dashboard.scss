@@ -1,0 +1,77 @@
+// Font Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+// Fonts
+@import "font";
+
+// Variables
+@import "variables";
+
+// Bulma
+@import "~bulma/bulma.sass";
+
+// Vue Select
+@import "~vue-select/src/scss/vue-select";
+
+#app {
+    display: flex;
+    flex-direction: column;
+    .facade {
+        flex: 1;
+    }
+}
+
+.is-notification {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    z-index: 2;
+    font-size: 0.6em;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    white-space: nowrap;
+    background: $primary;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    transform: translate(0, 50%);
+}
+
+.detailed{
+    padding-top:40px;
+}
+
+.v-select{
+    .vs__dropdown-menu{
+        overflow-x: hidden;
+        li {
+            border-bottom: 1px solid rgba(112, 128, 144, 0.1);
+            width: 100%;
+            a {
+                padding: 10px 10px;
+                width: 100%;
+                font-size: 1.25em;
+                color: #3c3c3c;
+            }
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    }
+    .vs__selected-options{
+        .vs__selected {
+            flex-grow: 1;
+            align-items:flex-start;
+            flex-direction: column;
+        }
+    }
+}
+
+.price::after{
+    content: "MVR";
+    margin-left:4px;
+}

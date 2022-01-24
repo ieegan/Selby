@@ -1,0 +1,62 @@
+.slide-wow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    img.desktop {
+        height: 100%;
+        width: 50%;
+        object-fit: cover;
+    }
+    .caption {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .overlay {
+            width: 200px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            background: black;
+            color: white;
+            padding: 12px 20px;
+        }
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .slide-wow {
+        display: flex;
+        flex-direction: column;
+        img.mobile {
+            height: 300px;
+            width: 100%;
+            object-fit: contain;
+        }
+        .caption {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .overlay {
+                width: 200px;
+            }
+            h2 {
+                font-size: 1.4em;
+                margin-bottom: 12px;
+            }
+            a {
+                display: inline-block;
+                background: black;
+                color: white;
+                padding: 12px 20px;
+            }
+        }
+    }
+}
