@@ -3,7 +3,16 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <v-select label="code" v-model="selected" @change="onChange($event)" :filterable="false" :options="options" @search="onSearch">
+        <v-select label="code" v-model="selected" @input="onChange($event)" :filterable="false" :options="options" @search="onSearch">
+            <template #search="{attributes, events}">
+                <input
+                  class="vs__search"
+                  :required="!selected"
+                  v-bind="attributes"
+                  v-on="events"
+                  v-model="codeNumber"
+                />
+              </template>
             <template slot="no-options">
                 type to search products
             </template>

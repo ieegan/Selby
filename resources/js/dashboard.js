@@ -13,7 +13,8 @@ const app = new Vue({
     data: {
         options: [],
         selected: null,
-        stocks: null
+        stocks: null,
+        codeNumber: null,
     },
     methods: {
         onSearch(search, loading) {
@@ -21,9 +22,6 @@ const app = new Vue({
                 loading(true);
                 this.search(loading, search, this);
             }
-        },
-        onChange(event) {
-            console.log(event.target.value)
         },
         search: _.debounce((loading, search, vm) => {
             fetch(
@@ -35,11 +33,20 @@ const app = new Vue({
         }, 350)
     },
     watch: {
-        selected: function() {
+        selected: function () {
             if (this.selected && this.selected.id) {
-                axios.get('/stocks/'+this.selected.id).then(response => this.stocks = response.data)
+                axios.get('/stocks/' + this.selected.id).then(response => this.stocks = response.data)
             } else {
                 this.stocks == null
+            }
+        },
+        codeNumber: function () {
+            // Card number without dash (-)
+            if (this.codeNumber) {
+                var x = this.codeNumber.replace(/\D/g, '').match(/(\d{0,3})(\d{0,4})(\d{0,2})/);
+                this.codeNumber = this.codeNumber.length <= 3 ? x[1] : (this.codeNumber.length <= 7 ? x[1] + '-' + x[2] : x[1] + '-' + x[2] + '-' + x[3]);
+            } else {
+                return null
             }
         }
     }
