@@ -3,16 +3,13 @@
 @section('content')
 <section class="section">
     <div class="container">
-        <v-select label="code" v-model="selected" @input="onChange($event)" :filterable="false" :options="options" @search="onSearch">
+
+        @hasanyrole('admin|supervisor')
+        <v-select label="code" v-model="selected" @input="onChange($event)" :filterable="false" :options="options"
+            @search="onPSearch">
             <template #search="{attributes, events}">
-                <input
-                  class="vs__search"
-                  :required="!selected"
-                  v-bind="attributes"
-                  v-on="events"
-                  v-model="codeNumber"
-                />
-              </template>
+                <input class="vs__search" :required="!selected" v-bind="attributes" v-on="events" />
+            </template>
             <template slot="no-options">
                 type to search products
             </template>
@@ -25,6 +22,26 @@
                 <div v-text="option.code"></div>
             </template>
         </v-select>
+        @else
+        <v-select label="code" v-model="selected" @input="onChange($event)" :filterable="false" :options="options"
+            @search="onSearch">
+            <template #search="{attributes, events}">
+                <input class="vs__search" :required="!selected" v-bind="attributes" v-on="events"
+                    v-model="codeNumber" />
+            </template>
+            <template slot="no-options">
+                type to search products
+            </template>
+            <template slot="option" slot-scope="option">
+                <div v-text="option.code"></div>
+                <div v-text="option.description"></div>
+                <div class="price" v-text="option.price"></div>
+            </template>
+            <template slot="selected-option" slot-scope="option">
+                <div v-text="option.code"></div>
+            </template>
+        </v-select>
+        @endhasanyrole
         <div class="detailed" v-if="selected">
             <h2 class="subtitle is-6" v-text="selected.description"></h2>
             <div class="level is-mobile">

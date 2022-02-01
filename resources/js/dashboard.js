@@ -23,9 +23,23 @@ const app = new Vue({
                 this.search(loading, search, this);
             }
         },
+        onPSearch(search, loading) {
+            if (search.length) {
+                loading(true);
+                this.psearch(loading, search, this);
+            }
+        },
         search: _.debounce((loading, search, vm) => {
             fetch(
                 `/search/products?q=${escape(search)}`
+            ).then(res => {
+                res.json().then(json => (vm.options = json));
+                loading(false);
+            });
+        }, 350),
+        psearch: _.debounce((loading, search, vm) => {
+            fetch(
+                `/search/products?s=1&q=${escape(search)}`
             ).then(res => {
                 res.json().then(json => (vm.options = json));
                 loading(false);
